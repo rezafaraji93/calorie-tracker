@@ -31,7 +31,6 @@ class GenderViewModel @Inject constructor(
     }
 
     fun onNextClicked() {
-
         viewModelScope.launch {
             preferences.saveGender(selectedGender)
             _uiEvent.send(UiEvent.Navigate(Route.AGE))
