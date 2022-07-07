@@ -12,11 +12,15 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
+import io.reza.calorietracker.navigation.util.navigate
 import io.reza.calorietracker.ui.theme.CalorieTrackerTheme
 import io.reza.core.navigation.Route
-import io.reza.calorietracker.navigation.util.navigate
+import io.reza.onboarding_presentation.activity.ActivityScreen
+import io.reza.onboarding_presentation.goal.GoalScreen
 import io.reza.onboarding_presentation.age.AgeScreen
 import io.reza.onboarding_presentation.gender.GenderScreen
+import io.reza.onboarding_presentation.height.HeightScreen
+import io.reza.onboarding_presentation.weight.WeightScreen
 import io.reza.onboarding_presentation.welcome.WelcomeScreen
 
 @AndroidEntryPoint
@@ -49,19 +53,25 @@ class MainActivity : ComponentActivity() {
                             GenderScreen(onNavigate = navController::navigate)
                         }
                         composable(Route.HEIGHT) {
-
+                            HeightScreen(
+                                onNavigate = navController::navigate,
+                                scaffoldState = scaffoldState
+                            )
                         }
                         composable(Route.WEIGHT) {
-
+                            WeightScreen(
+                                onNavigate = navController::navigate,
+                                scaffoldState = scaffoldState
+                            )
                         }
                         composable(Route.NUTRIENT_GOAL) {
 
                         }
                         composable(Route.ACTIVITY) {
-
+                            ActivityScreen(onNavigate = navController::navigate)
                         }
                         composable(Route.GOAL) {
-
+                            GoalScreen(onNavigate = navController::navigate)
                         }
                         composable(Route.TRACKER_OVERVIEW) {
 
