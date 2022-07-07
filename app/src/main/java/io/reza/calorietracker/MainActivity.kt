@@ -10,6 +10,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import io.reza.calorietracker.ui.theme.CalorieTrackerTheme
 import io.reza.core.navigation.Route
 import io.reza.calorietracker.navigation.util.navigate
+import io.reza.onboarding_presentation.gender.GenderScreen
 import io.reza.onboarding_presentation.welcome.WelcomeScreen
 
 @AndroidEntryPoint
@@ -24,15 +25,13 @@ class MainActivity : ComponentActivity() {
                     startDestination = Route.WELCOME
                 ) {
                     composable(Route.WELCOME) {
-                        WelcomeScreen(
-                            onNavigate = navController::navigate
-                        )
+                        WelcomeScreen(onNavigate = navController::navigate)
                     }
                     composable(Route.AGE) {
 
                     }
                     composable(Route.GENDER) {
-
+                        GenderScreen(onNavigate = navController::navigate)
                     }
                     composable(Route.HEIGHT) {
 
