@@ -9,7 +9,7 @@ import io.reza.onboarding_domain.use_case.ValidateNutrients
 
 @Module
 @InstallIn(ViewModelComponent::class)
-class OnboardingDomainModule {
+object OnboardingDomainModule {
 
     @Provides
     @ViewModelScoped
