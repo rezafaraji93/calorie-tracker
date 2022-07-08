@@ -22,7 +22,7 @@ object TrackerDomainModule {
         return TrackerUseCases(
             trackFood = TrackFood(repository),
             searchFood = SearchFood(repository),
-            getFoodsForData = GetFoodsForData(repository),
+            getFoodsForDate = GetFoodsForDate(repository),
             deleteTrackedFood = DeleteTrackedFood(repository),
             calculateMealNutrients = CalculateMealNutrients(preferences)
         )
