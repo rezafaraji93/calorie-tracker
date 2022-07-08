@@ -20,6 +20,7 @@ import io.reza.onboarding_presentation.goal.GoalScreen
 import io.reza.onboarding_presentation.age.AgeScreen
 import io.reza.onboarding_presentation.gender.GenderScreen
 import io.reza.onboarding_presentation.height.HeightScreen
+import io.reza.onboarding_presentation.nutrient_goals.NutrientGoalScreen
 import io.reza.onboarding_presentation.weight.WeightScreen
 import io.reza.onboarding_presentation.welcome.WelcomeScreen
 
@@ -65,7 +66,10 @@ class MainActivity : ComponentActivity() {
                             )
                         }
                         composable(Route.NUTRIENT_GOAL) {
-
+                            NutrientGoalScreen(
+                                onNavigate = navController::navigate,
+                                scaffoldState = scaffoldState
+                            )
                         }
                         composable(Route.ACTIVITY) {
                             ActivityScreen(onNavigate = navController::navigate)
