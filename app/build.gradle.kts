@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    compileSdk = ProjectConfig.compileSdk
+    compileSdk = 32
 
     defaultConfig {
         applicationId = ProjectConfig.appId
@@ -30,8 +30,8 @@ android {
         compose = true
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
         jvmTarget = "1.8"
@@ -40,10 +40,14 @@ android {
         kotlinCompilerExtensionVersion = Compose.composeCompilerVersion
     }
     packagingOptions {
-        exclude("META-INF/AL2.0")
-        exclude("META-INF/LGPL2.1")
-        exclude("**/attach_hotspot_windows.dll")
-        exclude("META-INF/licenses/ASM")
+        resources {
+            excludes += setOf(
+                "META-INF/AL2.0",
+                "META-INF/LGPL2.1",
+                "**/attach_hotspot_windows.dll",
+                "META-INF/licenses/ASM"
+            )
+        }
     }
 }
 
@@ -80,6 +84,8 @@ dependencies {
     implementation(Retrofit.retrofit)
     implementation(Retrofit.okHttpLoggingInterceptor)
     implementation(Retrofit.moshiConverter)
+
+    implementation(ThreeTenABP.threeTen)
 
     kapt(Room.roomCompiler)
     implementation(Room.roomKtx)

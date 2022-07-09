@@ -16,13 +16,14 @@ import io.reza.calorietracker.navigation.util.navigate
 import io.reza.calorietracker.ui.theme.CalorieTrackerTheme
 import io.reza.core.navigation.Route
 import io.reza.onboarding_presentation.activity.ActivityScreen
-import io.reza.onboarding_presentation.goal.GoalScreen
 import io.reza.onboarding_presentation.age.AgeScreen
 import io.reza.onboarding_presentation.gender.GenderScreen
+import io.reza.onboarding_presentation.goal.GoalScreen
 import io.reza.onboarding_presentation.height.HeightScreen
 import io.reza.onboarding_presentation.nutrient_goals.NutrientGoalScreen
 import io.reza.onboarding_presentation.weight.WeightScreen
 import io.reza.onboarding_presentation.welcome.WelcomeScreen
+import io.reza.tracker_presentation.tracker_overview.TrackerOverviewScreen
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -78,7 +79,7 @@ class MainActivity : ComponentActivity() {
                             GoalScreen(onNavigate = navController::navigate)
                         }
                         composable(Route.TRACKER_OVERVIEW) {
-
+                            TrackerOverviewScreen(onNavigate = navController::navigate)
                         }
                         composable(Route.SEARCH) {
 

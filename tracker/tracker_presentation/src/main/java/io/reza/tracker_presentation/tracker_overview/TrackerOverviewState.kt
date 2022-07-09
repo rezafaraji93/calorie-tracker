@@ -1,7 +1,7 @@
 package io.reza.tracker_presentation.tracker_overview
 
 import io.reza.tracker_domain.model.TrackedFood
-import java.time.LocalDate
+import org.threeten.bp.LocalDate
 
 data class TrackerOverviewState(
     val totalCarbs: Int = 0,

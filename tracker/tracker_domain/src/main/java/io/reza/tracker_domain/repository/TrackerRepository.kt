@@ -3,7 +3,7 @@ package io.reza.tracker_domain.repository
 import io.reza.tracker_domain.model.TrackableFood
 import io.reza.tracker_domain.model.TrackedFood
 import kotlinx.coroutines.flow.Flow
-import java.time.LocalDate
+import org.threeten.bp.LocalDate
 
 interface TrackerRepository {
 

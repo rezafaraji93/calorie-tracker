@@ -1,7 +1,13 @@
 package io.reza.calorietracker
 
 import android.app.Application
+import com.jakewharton.threetenabp.AndroidThreeTen
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class CalorieTrackerApp : Application()
+class CalorieTrackerApp : Application() {
+    override fun onCreate() {
+        super.onCreate()
+        AndroidThreeTen.init(this)
+    }
+}

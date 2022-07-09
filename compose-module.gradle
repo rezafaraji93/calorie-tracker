@@ -49,6 +49,8 @@ dependencies {
     implementation Compose.viewModelCompose
     implementation Compose.activityCompose
 
+    implementation ThreeTenABP.threeTen
+
     kapt DaggerHilt.hiltCompiler
     implementation DaggerHilt.hiltAndroid
 
