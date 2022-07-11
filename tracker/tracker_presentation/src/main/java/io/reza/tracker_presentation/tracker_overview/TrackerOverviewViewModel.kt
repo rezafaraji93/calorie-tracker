@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reza.core.domain.preferences.Preferences
-import io.reza.core.navigation.Route
 import io.reza.core.util.UiEvent
 import io.reza.tracker_domain.use_case.TrackerUseCases
 import kotlinx.coroutines.Job
@@ -30,28 +29,15 @@ class TrackerOverviewViewModel @Inject constructor(
     private val _uiEvent = Channel<UiEvent>()
     val uiEvent = _uiEvent.receiveAsFlow()
 
-    private var getFoodsForDateJob : Job? = null
+    private var getFoodsForDateJob: Job? = null
 
     init {
+        refreshFoods()
         preferences.saveShouldShowOnboarding(false)
-
     }
 
     fun onEvent(event: TrackerOverviewEvent) {
         when (event) {
-            is TrackerOverviewEvent.OnAddFoodClicked -> {
-                viewModelScope.launch {
-                    _uiEvent.send(
-                        UiEvent.Navigate(
-                            route = Route.SEARCH +
-                                    "/${event.meal.mealType.name}" +
-                                    "/${state.date.dayOfMonth}" +
-                                    "/${state.date.monthValue}" +
-                                    "/${state.date.year}"
-                        )
-                    )
-                }
-            }
             is TrackerOverviewEvent.OnDeleteTrackedFoodClicked -> {
                 viewModelScope.launch {
                     trackerUseCases.deleteTrackedFood(event.trackedFood)

@@ -3,7 +3,7 @@ package io.reza.tracker_data.mapper
 import io.reza.tracker_data.local.entity.TrackedFoodEntity
 import io.reza.tracker_domain.model.MealType
 import io.reza.tracker_domain.model.TrackedFood
-import java.time.LocalDate
+import org.threeten.bp.LocalDate
 
 fun TrackedFoodEntity.toTrackedFood(): TrackedFood {
     return TrackedFood(

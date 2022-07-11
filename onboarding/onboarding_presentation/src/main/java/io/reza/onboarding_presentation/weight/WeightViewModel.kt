@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reza.core.domain.preferences.Preferences
-import io.reza.core.navigation.Route
 import io.reza.core.util.UiEvent
 import io.reza.core.util.UiText
 import kotlinx.coroutines.channels.Channel
@@ -45,7 +44,7 @@ class WeightViewModel @Inject constructor(
                 return@launch
             }
             preferences.saveWeight(weightNumber)
-            _uiEvent.send(UiEvent.Navigate(Route.WEIGHT))
+            _uiEvent.send(UiEvent.Success)
         }
     }
 

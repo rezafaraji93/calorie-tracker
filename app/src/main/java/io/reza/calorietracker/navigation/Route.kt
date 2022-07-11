@@ -1,4 +1,4 @@
-package io.reza.core.navigation
+package io.reza.calorietracker.navigation
 
 object Route {
 

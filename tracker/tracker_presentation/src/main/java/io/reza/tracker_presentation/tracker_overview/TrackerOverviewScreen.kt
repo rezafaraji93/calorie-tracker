@@ -9,14 +9,13 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.annotation.ExperimentalCoilApi
-import io.reza.core.util.UiEvent
 import io.reza.core_ui.LocalSpacing
 import io.reza.tracker_presentation.tracker_overview.components.*
 
 @ExperimentalCoilApi
 @Composable
 fun TrackerOverviewScreen(
-    onNavigate: (UiEvent.Navigate) -> Unit,
+    onNavigateToSearch: (String, Int, Int, Int) -> Unit,
     viewModel: TrackerOverviewViewModel = hiltViewModel()
 ) {
 
@@ -51,25 +50,33 @@ fun TrackerOverviewScreen(
                             .fillMaxWidth()
                             .padding(horizontal = spacing.spaceSmall)
                     ) {
-                        state.trackedFoods.forEach { trackedFood ->
-                            TrackedFoodItem(
-                                trackedFood = trackedFood,
-                                onDeleteClick = {
-                                    viewModel.onEvent(
-                                        TrackerOverviewEvent.OnDeleteTrackedFoodClicked(
-                                            trackedFood
+                        state.trackedFoods.filter { it.mealType == meal.mealType }
+                            .forEach { trackedFood ->
+                                TrackedFoodItem(
+                                    trackedFood = trackedFood,
+                                    onDeleteClick = {
+                                        viewModel.onEvent(
+                                            TrackerOverviewEvent.OnDeleteTrackedFoodClicked(
+                                                trackedFood
+                                            )
                                         )
-                                    )
-                                }
-                            )
-                            Spacer(modifier = Modifier.height(spacing.spaceMedium))
-                        }
+                                    }
+                                )
+                                Spacer(modifier = Modifier.height(spacing.spaceMedium))
+                            }
                         AddButton(
                             text = stringResource(
                                 id = io.reza.core.R.string.add_meal,
                                 meal.name.asString(context)
                             ),
-                            onClick = { viewModel.onEvent(TrackerOverviewEvent.OnAddFoodClicked(meal)) },
+                            onClick = {
+                                onNavigateToSearch(
+                                    meal.name.asString(context),
+                                    state.date.dayOfMonth,
+                                    state.date.monthValue,
+                                    state.date.year
+                                )
+                            },
                             modifier = Modifier.fillMaxWidth()
                         )
                     }
