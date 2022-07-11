@@ -4,7 +4,7 @@ import io.reza.tracker_domain.model.MealType
 import io.reza.tracker_domain.model.TrackableFood
 import io.reza.tracker_domain.model.TrackedFood
 import io.reza.tracker_domain.repository.TrackerRepository
-import java.time.LocalDate
+import org.threeten.bp.LocalDate
 import kotlin.math.roundToInt
 
 class TrackFood(

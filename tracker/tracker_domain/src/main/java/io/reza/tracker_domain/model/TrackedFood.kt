@@ -1,6 +1,6 @@
 package io.reza.tracker_domain.model
 
-import java.time.LocalDate
+import org.threeten.bp.LocalDate
 
 data class TrackedFood(
     val name: String,
